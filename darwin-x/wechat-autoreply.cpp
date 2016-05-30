@@ -82,7 +82,9 @@ bool QuitProgram = false;
 
 #include "common_funcs.cpp"
 #include "UImain.cpp"
-#include "webwx.cpp"
+#include "webwx_init.cpp"
+#include "webwx_exchg.cpp"
+
 
 void process_main() {
 
