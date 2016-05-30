@@ -1,5 +1,9 @@
 #include <string>
 #include <ctype.h>
+#include <time.h>
+
+#include "common_funcs.h"
+
 using namespace std;
 
 extern bool DEBUG;
@@ -37,7 +41,9 @@ std::string QRcodeGET() {
 size_t get_request_toFILE(void* buffer, size_t size, size_t nmemb, void* user_p) {
     FILE *fp = (FILE *)user_p;
     size_t return_size = fwrite(buffer, size, nmemb, fp);
-    cout << "get the Data and stored to file... succeeded. " << endl;
+    if (DEBUG) {
+        cout << "get the Data and stored to file... succeeded. " << endl;
+    }
     // cout << "size_t size : " << size << ", size_t nmemb : " << nmemb << ", size_t return_size : " << return_size << endl;
     return return_size;
 }
