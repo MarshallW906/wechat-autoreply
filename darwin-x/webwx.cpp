@@ -69,6 +69,7 @@ bool getUUID() {
     // get uuid
     string toGetUUIDstr = string("https://login.weixin.qq.com/jslogin?") + InitGET();
     const char * toGetUUID = toGetUUIDstr.c_str();
+
     if (DEBUG) {
         cout << toGetUUID << endl;
     }
@@ -127,7 +128,11 @@ bool getUUID() {
 bool showQRImage() {
 
     string toGetQRcode = string("https://login.weixin.qq.com/qrcode/") + uuid + QRcodeGET();
-    cout << toGetQRcode << endl;
+
+    if (DEBUG) {
+        cout << toGetQRcode << endl;
+    }
+
     const char *tgqr = toGetQRcode.c_str();
 
     if (DEBUG) {

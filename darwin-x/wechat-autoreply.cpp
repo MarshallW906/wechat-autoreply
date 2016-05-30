@@ -143,7 +143,7 @@ void process_main() {
                 }
             }
             sleep(1);
-            if (ReplySwitch && tmpMsgRecvCount != 0) {
+            if ((ReplySwitch) && tmpMsgRecvCount != 0) {
                 sync_SendMsg_forReply_POST();
             }
         }

@@ -9,6 +9,7 @@ using namespace std;
 
 void print_UI_main() {
     cout << "Main menu : " << endl;
+    cout << " A, a : show the current user's NickName" << endl;
     cout << " S, s : set the autoreply-Msg [only string is available]" << endl;
     cout << " E, e : enable auto-Reply " << endl;
     cout << " D, d : disable auto-Reply " << endl;
@@ -24,11 +25,17 @@ void* UI_main(void *para) {
     char choice;
     bool quit = false;
 
+    showCurrentUserInfo();
     print_UI_main();
     do {
         cin >> choice;
 
         switch (choice) {
+            case 'A':
+            case 'a':
+            showCurrentUserInfo();
+            break;
+
             case 'F':
             case 'f':
             check_reply_failure();

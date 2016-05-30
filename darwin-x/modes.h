@@ -1,6 +1,7 @@
 #ifndef WECHAT_AUTOREPLY_COMMON_MODES
 #define WECHAT_AUTOREPLY_COMMON_MODES
 
+void showCurrentUserInfo();
 void setReplyMsg();
 
 void setReplyOn();

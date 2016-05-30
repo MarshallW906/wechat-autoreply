@@ -4,6 +4,8 @@ using namespace std;
 
 extern CURL *easy_handle;
 
+extern Json::Value MyUserInfo;
+
 extern std::string autoReplyMsg;
 extern bool ReplySwitch;
 extern bool QuitProgram;
@@ -11,6 +13,11 @@ extern bool QuitProgram;
 extern std::map<std::string, std::string> Users_Reply_failed;
 extern int Strangers_Reply_failed;
 
+void showCurrentUserInfo() {
+    std::string tmp_NickName = MyUserInfo["NickName"].asString();
+
+    printf("Current User's NickName : %s\n", tmp_NickName.c_str());
+}
 
 void setReplyMsg() {
     if (ReplySwitch == true) {
