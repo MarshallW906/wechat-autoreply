@@ -28,7 +28,10 @@ void setReplyMsg() {
     cout << "Enter the new message you want to AUTO-Reply : " << endl;
 
     try {
-        std::cin >> autoReplyMsg;
+        char c;
+        c = getchar();
+        getline(cin, autoReplyMsg);
+        // std::cin >> autoReplyMsg;
     } catch (const std::exception& e) {
         cout << "Change autoReply Message failed." << endl;
         cout << "The following is the standard Error info." << endl;
