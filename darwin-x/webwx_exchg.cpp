@@ -44,10 +44,10 @@ bool syncCheck_GET() {
 
     const char *sync_url = syncStr.c_str();
 
-    if (DEBUG) {
-        cout << "the GET url is " << endl;
-        cout << syncStr << endl;
-    }
+//      if (DEBUG) {
+//          cout << "the GET url is " << endl;
+//          cout << syncStr << endl;
+//      }
 
     curl_easy_setopt(easy_handle, CURLOPT_HTTPGET, 1L);
     curl_easy_setopt(easy_handle, CURLOPT_POST, 0);

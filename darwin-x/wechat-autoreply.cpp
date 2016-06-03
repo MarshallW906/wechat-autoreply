@@ -26,7 +26,7 @@ using namespace std;
 #ifndef W_AUTOREPLY_GLOBAL_VAR
 #define W_AUTOREPLY_GLOBAL_VAR
 
-bool DEBUG = false;
+bool DEBUG = true;
 
 int tip = 0;
 
@@ -64,6 +64,8 @@ curl_slist *plist_wx;
 
 // { for modes.cpp
 std::string autoReplyMsg = "now busy. [This msg is sent by autoReply.cpp]";
+std::vector<std::string> ReplyMsgs;
+
 bool ReplySwitch = true;
 bool QuitProgram = false;
 // } for modes.cpp
@@ -88,6 +90,10 @@ bool QuitProgram = false;
 
 void process_main() {
 
+    ReplyMsgs.push_back(std::string("now busy. [This msg is sent by autoReply.cpp]"));
+    ReplyMsgs.push_back(std::string("I have been asleep. zzzZZZZ... [auto Reply.cpp]"));
+    ReplyMsgs.push_back(std::string("Doing homework, no disturbance =n=+!!! [auto Reply.cpp]"));
+    
     if (!getUUID()) {
         cout << "获取uuid失败" << endl;
         return;
@@ -125,7 +131,7 @@ void process_main() {
         pth_ret = pthread_create(&shell_id, NULL, &UI_main, NULL);
     }
 
-    if (pth_ret) {
+    if (!DEBUG && pth_ret) {
         cout << "Create pthread error!" << endl;
         curl_easy_cleanup(easy_handle);
         curl_global_cleanup();

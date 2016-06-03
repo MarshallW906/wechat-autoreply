@@ -7,6 +7,8 @@ extern CURL *easy_handle;
 extern Json::Value MyUserInfo;
 
 extern std::string autoReplyMsg;
+extern std::vector<std::string> ReplyMsgs;
+
 extern bool ReplySwitch;
 extern bool QuitProgram;
 
@@ -28,10 +30,28 @@ void setReplyMsg() {
     cout << "Enter the new message you want to AUTO-Reply : " << endl;
 
     try {
-        char c;
-        c = getchar();
-        getline(cin, autoReplyMsg);
-        // std::cin >> autoReplyMsg;
+        cout << "Enter 1 to select a pre-stored Msg, 2 to set your own reply Msg. : ";
+        int mode;
+        do {
+             cin >> mode;
+        } while (!(mode == 1 || mode == 2));
+
+        switch (mode) {
+            case 1:
+            for (int i = 0; i < ReplyMsgs.size(); i++)
+                cout << i + 1 << " : " << ReplyMsgs[i] << endl;
+            do {
+                cin >> mode;
+                autoReplyMsg = ReplyMsgs[mode - 1];
+            } while (!(mode > 0 && mode <= ReplyMsgs.size()));
+            break;
+            
+            case 2:
+            char c;
+            c = getchar();
+            getline(cin, autoReplyMsg);
+            break;
+        }   
     } catch (const std::exception& e) {
         cout << "Change autoReply Message failed." << endl;
         cout << "The following is the standard Error info." << endl;
@@ -43,10 +63,12 @@ void setReplyMsg() {
 };
 
 void setReplyOn() {
+    cout << "auto reply ON" << endl;
     ReplySwitch = true;
 };
 
 void setReplyOff() {
+    cout << "auto reply OFF" << endl;
     ReplySwitch = false;
 };
 
@@ -85,5 +107,6 @@ void check_reply_failure() {
 void ClearAll_UnReply() {
     Users_Reply_failed.clear();
     Strangers_Reply_failed = 0;
+    cout << "CLear all failure" << endl;
 }
 
