@@ -26,7 +26,7 @@ using namespace std;
 #ifndef W_AUTOREPLY_GLOBAL_VAR
 #define W_AUTOREPLY_GLOBAL_VAR
 
-bool DEBUG = true;
+bool DEBUG = false;
 
 int tip = 0;
 
